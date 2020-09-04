@@ -13,7 +13,7 @@ export const Container = styled.div`
     margin: 10px;
 
     button {
-      background: #006e90;
+      background: #080030;
       height: 10vh;
       width: 15vw;
       border: 2px solid #e8fcc2;
