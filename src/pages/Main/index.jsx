@@ -1,10 +1,18 @@
 import React from 'react';
-
-// import { Container } from './styles';
+import { Link } from 'react-router-dom';
+import { Container } from './styles';
 
 function Main() {
   return (
-    <h1>Hello</h1>
+    <Container>
+      <Link to="/pressReaction">
+        <button type="button">
+          <p>
+            Press Reaction
+          </p>
+        </button>
+      </Link>
+    </Container>
   );
 }
 
