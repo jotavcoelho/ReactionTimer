@@ -33,16 +33,12 @@ function PressReaction() {
   }, []);
 
   const quit = useCallback(() => {
-    setStarted(false);
-    setClickable(false);
-    setCounter(3);
-    clearTimeout(clickTimer);
-    clearTimeout(countdown);
+    
   }, [countdown, clickTimer]);
 
   useEffect(() => {
     if(started) {
-      console.log("entered started if")
+      console.log("entered started if");
       if(counter > 0) {
         setCountdown(setTimeout(() => 
           setCounter(counter - 1), 1000));
@@ -66,13 +62,13 @@ function PressReaction() {
     <Container>
       <ClickContainer onClick={useCallback(() => setStarted(true), [])} >
       {/* <ClickContainer > */}
-        {/* {!started && <p>Click anywhere to start</p>} */}
+        {!started && <p>Click anywhere to start</p>}
 
-        {/* {started && counter !== 0 && <p>{counter}</p> } */}
+        {started && counter !== 0 && <p>{counter}</p> }
 
-        {/* {counter === 0 && <CircleToBeClickedASAP />} */}
+        {counter === 0 && <CircleToBeClickedASAP clickable={clickable} />}
 
-        <CircleToBeClickedASAP clickable={clickable} />
+        {/* <CircleToBeClickedASAP clickable={clickable} /> */}
       </ClickContainer>
       
       {started && <button 

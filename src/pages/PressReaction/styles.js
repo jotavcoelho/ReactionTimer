@@ -38,5 +38,5 @@ export const CircleToBeClickedASAP = styled.div`
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: #9A031E;
+  background-color: ${props => props.clickable ? '#A3E7FC' : '#9A031E'};
 `;
