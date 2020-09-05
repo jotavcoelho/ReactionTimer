@@ -24,7 +24,6 @@ function PressReaction() {
 
   const [timeWhenClickable, setTimeWhenClickable] = useState(null);
 
-
   useEffect(() => {
     document.title = "Press Reaction";
 
@@ -32,15 +31,6 @@ function PressReaction() {
       document.title = "ReactionTimer";
     }
   }, []);  
-
-  // const start = useCallback(() => {
-  //   setStarted(true);
-  //   console.log("started");
-  //   if(counter > 0)
-  //     setCountdown(setTimeout(() => setCounter(counter - 1), 1000));
-    
-  //   setClickTimer(setTimeout(() => setClickable(true), rando(3000, 13000)));
-  // }, [counter]);
 
   const quit = useCallback(() => {
     console.log("quit");
