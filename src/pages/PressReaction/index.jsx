@@ -28,26 +28,37 @@ function PressReaction() {
     }
   }, []);  
 
-  const start = useCallback(() => {
-    setStarted(true);
-  }, []);
+  // const start = useCallback(() => {
+  //   setStarted(true);
+  //   console.log("started");
+  //   if(counter > 0)
+  //     setCountdown(setTimeout(() => setCounter(counter - 1), 1000));
+    
+  //   setClickTimer(setTimeout(() => setClickable(true), rando(3000, 13000)));
+  // }, [counter]);
 
   const quit = useCallback(() => {
-    
+    console.log("quit");
+    setStarted(false);
+    clearTimeout(clickTimer);
+    console.log("before setClickable false");
+    setClickable(false);
+    console.log("after setClickable false");
+    clearTimeout(countdown);
+    setCounter(3);
   }, [countdown, clickTimer]);
 
   useEffect(() => {
     if(started) {
-      console.log("entered started if");
-      if(counter > 0) {
-        setCountdown(setTimeout(() => 
-          setCounter(counter - 1), 1000));
-      }
-      setClickTimer(setTimeout(
-        () => setClickable(true), 
-        rando(3000, 15000)));
+      console.log("before setClickable true");
+      setClickTimer(setTimeout(() => setClickable(true), rando(5000, 14000)));
+      console.log("after setClickable true");
     }
+  }, [started]);
 
+  useEffect(() => {
+    if(started && (counter > 0))
+      setCountdown(setTimeout(() => setCounter(counter - 1), 1000));
   }, [started, counter]);
 
   useEffect(() => {
@@ -55,8 +66,8 @@ function PressReaction() {
   }, [clickable]);
 
   const clickedCircle = useCallback(() => {
-    
-  }, []);
+    console.log(`circle was clicked when clickable is ${clickable}`);
+  }, [clickable]);
 
   return (
     <Container>
@@ -66,7 +77,10 @@ function PressReaction() {
 
         {started && counter !== 0 && <p>{counter}</p> }
 
-        {counter === 0 && <CircleToBeClickedASAP clickable={clickable} />}
+        {counter === 0 && <CircleToBeClickedASAP 
+          clickable={clickable} 
+          onClick={clickedCircle} 
+        />}
 
         {/* <CircleToBeClickedASAP clickable={clickable} /> */}
       </ClickContainer>
