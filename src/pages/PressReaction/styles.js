@@ -31,6 +31,12 @@ export const ClickContainer = styled.div`
       font-weight: bold;
       text-transform: uppercase;
     }
-
   }
+`;
+
+export const CircleToBeClickedASAP = styled.div`
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #9A031E;
 `;

@@ -1340,6 +1340,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nastyox/rando.js@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@nastyox/rando.js/-/rando.js-2.0.2.tgz#e7ced043351ff3de3f191391af2dd7b96b7ec747"
+  integrity sha512-TKvJtgw+j94YqUSyMb6pFOFfDDHVMGPliueMF1Ax4mFna4c07LFy5WBxi6HLhvidCNfXDN2pf4LvttUHTYY3Ag==
+
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
