@@ -7,7 +7,15 @@ import React, {
 import { 
   Container, 
   ClickContainer, 
-  CircleToBeClickedASAP
+  CircleToBeClickedASAP,
+  Sidebar,
+  PseudoHeader,
+  Secs,
+  TimeList,
+  FirstHalf,
+  SecondHalf,
+  Time,
+  IndividualSecs
 } from './styles';
 
 import randojs from '@nastyox/rando.js';
@@ -71,28 +79,115 @@ function PressReaction() {
   }, [clickable, timeWhenClickable]);
 
   return (
-    <Container>
-      <ClickContainer onClick={useCallback(() => setStarted(true), [])} >
-      {/* <ClickContainer > */}
-        {!started && <p>Click anywhere to start</p>}
+    <>
+      <Container>
+        <ClickContainer onClick={useCallback(() => setStarted(true), [])} >
+        {/* <ClickContainer > */}
+          {!started && <p>Click anywhere to start</p>}
 
-        {started && counter !== 0 && <p>{counter}</p> }
+          {started && counter !== 0 && <p>{counter}</p> }
 
-        {counter === 0 && <CircleToBeClickedASAP 
-          clickable={clickable} 
-          onClick={circleClicked} 
-        />}
+          {counter === 0 && <CircleToBeClickedASAP 
+            clickable={clickable} 
+            onClick={circleClicked} 
+          />}
 
-        {/* <CircleToBeClickedASAP clickable={clickable} /> */}
-      </ClickContainer>
-      
-      {started && <button 
-        id="quit"
-        type="button" 
-        onClick={quit} >
-        <p>Quit</p>
-      </button>}
-    </Container>
+          {/* <CircleToBeClickedASAP clickable={clickable} /> */}
+        </ClickContainer>
+        
+        {started && <button 
+          id="quit"
+          type="button" 
+          onClick={quit} >
+          <p>Quit</p>
+        </button>}
+        <Sidebar>
+          <PseudoHeader>
+            <p>Average:</p>
+            <Secs>
+              <span>0.0000</span>
+              <p>sec</p>
+            </Secs>
+          </PseudoHeader>
+          <TimeList>
+            <FirstHalf>
+              <Time>
+                <p>1</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>2</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>3</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>4</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>5</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+            </FirstHalf>
+            <SecondHalf>
+              <Time>
+                <p>6</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>7</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>8</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>9</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+              <Time>
+                <p>10</p>
+                <IndividualSecs>
+                  <span>0.288</span>
+                  <p>sec</p>
+                </IndividualSecs>
+              </Time>
+            </SecondHalf>
+          </TimeList>
+        </Sidebar>
+      </Container>
+    </>
   );
 }
 
