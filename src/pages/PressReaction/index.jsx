@@ -48,8 +48,9 @@ function PressReaction() {
     setStarted(true);
   }, []);
 
-  const quit = useCallback(() => {
-    console.log("quit");
+  const quit = useCallback((e) => {
+    if(e)
+      setReactionTimes([]);
     setStarted(false);
 
     clearTimeout(clickTimer);
@@ -75,21 +76,33 @@ function PressReaction() {
       setTimeWhenClickable(Date.now());
   }, [started, clickable]);
 
-  const circleClicked = useCallback(() => {
+  const reset = useCallback(async () => {
+    await quit(); // if I hadn't used await, the clickable timer wouldn't be resetting, damn, having the knowledge that state changes are kinda async really helped
+    start();
+  }, [quit, start]);
+
+  const circleClicked = useCallback(async () => {
     if(!clickable) {
-      console.log("It wasn't clickable, one second penalty");
+      var newReactionTimes = reactionTimes;
+      const penalty = 1;
+      newReactionTimes.push(penalty.toFixed(3));
+      setReactionTimes(newReactionTimes);
+
+      reset();
+      
     } else {
       const timeWhenClicked = Date.now();
       const reactionTime = (timeWhenClicked - timeWhenClickable) / 1000;
       
-      var newReactionTimes = reactionTimes;
+      newReactionTimes = reactionTimes;
       newReactionTimes.push(reactionTime.toFixed(3));
-      
       setReactionTimes(newReactionTimes);
       // reactionTime.toFixed(4) makes the number have 4 floating points, this will be useful for the average
+      reset();
+
     }
     console.log(`circle was clicked when clickable is ${clickable}`);
-  }, [clickable, timeWhenClickable, reactionTimes]);
+  }, [clickable, timeWhenClickable, reactionTimes, reset]);
 
   // useEffect(() => {
   //   setAverage(reactionTimes.reduce((total, next) => {
@@ -133,46 +146,36 @@ function PressReaction() {
             <Time>
               <p>1</p>
               <IndividualSecs>
-                {reactionTimes[0] && <>
-                  <span>{reactionTimes[0]}</span>
+                  <span>{reactionTimes[0] ? reactionTimes[0] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>2</p>
               <IndividualSecs>
-                {reactionTimes[1] && <>
-                  <span>{reactionTimes[1]}</span>
+                  <span>{reactionTimes[1] ? reactionTimes[1] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>3</p>
               <IndividualSecs>
-                {reactionTimes[2] && <>
-                  <span>{reactionTimes[2]}</span>
+                  <span>{reactionTimes[2] ? reactionTimes[2] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>4</p>
               <IndividualSecs>
-                {reactionTimes[3] && <>
-                  <span>{reactionTimes[3]}</span>
+                  <span>{reactionTimes[3] ? reactionTimes[3] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>5</p>
               <IndividualSecs>
-                {reactionTimes[4] && <>
-                  <span>{reactionTimes[4]}</span>
+                  <span>{reactionTimes[4] ? reactionTimes[4] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
           </FirstHalf>
@@ -180,46 +183,36 @@ function PressReaction() {
             <Time>
               <p>6</p>
               <IndividualSecs>
-                {reactionTimes[5] && <>
-                  <span>{reactionTimes[5]}</span>
+                  <span>{reactionTimes[5] ? reactionTimes[5] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>7</p>
               <IndividualSecs>
-                {reactionTimes[6] && <>
-                  <span>{reactionTimes[6]}</span>
+                  <span>{reactionTimes[6] ? reactionTimes[6] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>8</p>
               <IndividualSecs>
-                {reactionTimes[7] && <>
-                  <span>{reactionTimes[7]}</span>
+                  <span>{reactionTimes[7] ? reactionTimes[7] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>9</p>
               <IndividualSecs>
-                {reactionTimes[8] && <>
-                  <span>{reactionTimes[8]}</span>
+                  <span>{reactionTimes[8] ? reactionTimes[8] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
             <Time>
               <p>10</p>
               <IndividualSecs>
-                {reactionTimes[9] && <>
-                  <span>{reactionTimes[9]}</span>
+                  <span>{reactionTimes[9] ? reactionTimes[9] : "0.000"}</span>
                   <p>sec</p>
-                </>}
               </IndividualSecs>
             </Time>
           </SecondHalf>
