@@ -86,13 +86,17 @@ export const TimeList = styled.div`
 
 export const FirstHalf = styled.div`
   margin-right: 8px;
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const SecondHalf = styled.div`
   margin-left: 8px;
   padding-right: 5px;
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const Time = styled.div`

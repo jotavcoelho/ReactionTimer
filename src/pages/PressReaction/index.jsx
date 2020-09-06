@@ -146,36 +146,61 @@ function PressReaction() {
             <Time>
               <p>1</p>
               <IndividualSecs>
-                  <span>{reactionTimes[0] ? reactionTimes[0] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[0] ? reactionTimes[0] : "0.000"}</span> */}
+                  {reactionTimes[0] && 
+                    <>
+                      <span>{reactionTimes[0]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>2</p>
               <IndividualSecs>
-                  <span>{reactionTimes[1] ? reactionTimes[1] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[1] ? reactionTimes[1] : "0.000"}</span> */}
+                  {reactionTimes[1] && 
+                    <>
+                      <span>{reactionTimes[1]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>3</p>
               <IndividualSecs>
-                  <span>{reactionTimes[2] ? reactionTimes[2] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[2] ? reactionTimes[2] : "0.000"}</span> */}
+                  {reactionTimes[2] && 
+                    <>
+                      <span>{reactionTimes[2]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>4</p>
               <IndividualSecs>
-                  <span>{reactionTimes[3] ? reactionTimes[3] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[3] ? reactionTimes[3] : "0.000"}</span> */}
+                  {reactionTimes[3] && 
+                    <>
+                      <span>{reactionTimes[3]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>5</p>
               <IndividualSecs>
-                  <span>{reactionTimes[4] ? reactionTimes[4] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[4] ? reactionTimes[4] : "0.000"}</span> */}
+                  {reactionTimes[4] && 
+                    <>
+                      <span>{reactionTimes[4]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
           </FirstHalf>
@@ -183,36 +208,61 @@ function PressReaction() {
             <Time>
               <p>6</p>
               <IndividualSecs>
-                  <span>{reactionTimes[5] ? reactionTimes[5] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[5] ? reactionTimes[5] : "0.000"}</span> */}
+                  {reactionTimes[5] && 
+                    <>
+                      <span>{reactionTimes[5]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>7</p>
               <IndividualSecs>
-                  <span>{reactionTimes[6] ? reactionTimes[6] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[6] ? reactionTimes[6] : "0.000"}</span> */}
+                  {reactionTimes[6] && 
+                    <>
+                      <span>{reactionTimes[6]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>8</p>
               <IndividualSecs>
-                  <span>{reactionTimes[7] ? reactionTimes[7] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[7] ? reactionTimes[7] : "0.000"}</span> */}
+                  {reactionTimes[7] && 
+                    <>
+                      <span>{reactionTimes[7]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>9</p>
               <IndividualSecs>
-                  <span>{reactionTimes[8] ? reactionTimes[8] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[8] ? reactionTimes[8] : "0.000"}</span> */}
+                  {reactionTimes[8] && 
+                    <>
+                      <span>{reactionTimes[8]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
             <Time>
               <p>10</p>
               <IndividualSecs>
-                  <span>{reactionTimes[9] ? reactionTimes[9] : "0.000"}</span>
-                  <p>sec</p>
+                  {/* <span>{reactionTimes[9] ? reactionTimes[9] : "0.000"}</span> */}
+                  {reactionTimes[9] && 
+                    <>
+                      <span>{reactionTimes[9]}</span>
+                      <p>sec</p>
+                    </>
+                  }
               </IndividualSecs>
             </Time>
           </SecondHalf>
