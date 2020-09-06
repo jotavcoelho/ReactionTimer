@@ -36,6 +36,8 @@ function PressReaction() {
   const [average, setAverage] = useState(null);
   const [reactionTimes, setReactionTimes] = useState([]);
 
+  const [punishmentTime, setPunishmentTime] = useState(null);
+
   useEffect(() => {
     document.title = "Press Reaction";
 
@@ -58,7 +60,9 @@ function PressReaction() {
 
     clearTimeout(countdown);
     setCounter(3);
-  }, [countdown, clickTimer]);
+    
+    clearTimeout(punishmentTime);
+  }, [countdown, clickTimer, punishmentTime]);
 
   useEffect(() => {
     if(started) {
@@ -81,20 +85,30 @@ function PressReaction() {
     start();
   }, [quit, start]);
 
+  const punish = useCallback(() => {
+    const newReactionTimes = reactionTimes;
+    const penalty = 1;
+    
+    newReactionTimes.push(penalty.toFixed(3));
+    setReactionTimes(newReactionTimes);
+
+    reset();
+  }, [reactionTimes, reset]);
+
+  // useEffect(() => {
+  //   if(clickable)
+  //     setPunishmentTime(setTimeout(() => punish(), 1000));
+  // }, [clickable, punish]);
+
   const circleClicked = useCallback(async () => {
     if(!clickable) {
-      var newReactionTimes = reactionTimes;
-      const penalty = 1;
-      newReactionTimes.push(penalty.toFixed(3));
-      setReactionTimes(newReactionTimes);
+      punish();
 
-      reset();
-      
     } else {
       const timeWhenClicked = Date.now();
       const reactionTime = (timeWhenClicked - timeWhenClickable) / 1000;
       
-      newReactionTimes = reactionTimes;
+      const newReactionTimes = reactionTimes;
       newReactionTimes.push(reactionTime.toFixed(3));
       setReactionTimes(newReactionTimes);
       // reactionTime.toFixed(4) makes the number have 4 floating points, this will be useful for the average
@@ -102,7 +116,7 @@ function PressReaction() {
 
     }
     console.log(`circle was clicked when clickable is ${clickable}`);
-  }, [clickable, timeWhenClickable, reactionTimes, reset]);
+  }, [clickable, timeWhenClickable, reactionTimes, punish, reset]);
 
   // useEffect(() => {
   //   setAverage(reactionTimes.reduce((total, next) => {
