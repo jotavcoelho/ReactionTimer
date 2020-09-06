@@ -5,6 +5,15 @@ export const Container = styled.div`
   min-height: 500px;
   margin: 30px auto;
   display: flex;
+`;
+
+export const GameContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background: #040108;
+  border-radius: 20px;
   position: relative;
 
   #quit {
@@ -17,21 +26,20 @@ export const Container = styled.div`
       text-transform: uppercase;
     }
   }
-`;
-
-export const ClickContainer = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background: #040108;
-  border-radius: 20px;
 
   > p {
-      font-size: 20px;
+      font-size: 30px;
       text-transform: uppercase;
     }
   }
+`;
+
+export const StartText = styled.p`
+  font-size: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
 `;
 
 export const CircleToBeClickedASAP = styled.div`
@@ -79,12 +87,12 @@ export const TimeList = styled.div`
 export const FirstHalf = styled.div`
   margin-right: 8px;
 
-
 `;
 
 export const SecondHalf = styled.div`
   margin-left: 8px;
   padding-right: 5px;
+
 `;
 
 export const Time = styled.div`
