@@ -60,8 +60,10 @@ function PressReaction() {
   }, []);
 
   const quit = useCallback((e) => {
-    if(e)
+    if(e) {
       setReactionTimes([]);
+      setAverage(null);
+    }
       
     setStarted(false);
 
