@@ -36,8 +36,6 @@ function PressReaction() {
   const [average, setAverage] = useState(null);
   const [reactionTimes, setReactionTimes] = useState([]);
 
-  const [punishmentTime, setPunishmentTime] = useState(null);
-
   useEffect(() => {
     document.title = "Press Reaction";
 
@@ -46,6 +44,17 @@ function PressReaction() {
     }
   }, []);  
 
+  const dynamicUpdateAverage = useCallback(() => {
+    if(reactionTimes.length) {
+      const reactionSum = reactionTimes.reduce((total, next) => {
+        return Number(total) + Number(next);
+      }, 0);
+      console.log(reactionSum);
+      const reactionAverage = reactionSum / reactionTimes.length;
+      setAverage(reactionAverage.toFixed(4));
+    }
+  }, [reactionTimes]);
+
   const start = useCallback(() => {
     setStarted(true);
   }, []);
@@ -53,16 +62,15 @@ function PressReaction() {
   const quit = useCallback((e) => {
     if(e)
       setReactionTimes([]);
+      
     setStarted(false);
 
     clearTimeout(clickTimer);
     setClickable(false);
 
     clearTimeout(countdown);
-    setCounter(3);
-    
-    clearTimeout(punishmentTime);
-  }, [countdown, clickTimer, punishmentTime]);
+    // setCounter(3);
+  }, [countdown, clickTimer]);
 
   useEffect(() => {
     if(started) {
@@ -95,34 +103,48 @@ function PressReaction() {
     reset();
   }, [reactionTimes, reset]);
 
-  // useEffect(() => {
-  //   if(clickable)
-  //     setPunishmentTime(setTimeout(() => punish(), 1000));
-  // }, [clickable, punish]);
+
+  // const dynamicUpdateAverage = useCallback(() => {
+  //   setAverage(reactionTimes.reduce((total, next) => {
+  //     console.log(total);
+  //     console.log(next);
+  //     console.log(reactionTimes);
+  //     console.log(reactionTimes.length);
+  //     return (Number(total) + Number(next)) / reactionTimes.length;
+  //   }));
+  // }, [reactionTimes]);
+
+  const staticUpdateAverage = useCallback(() => {
+    const reactionSum = reactionTimes.reduce((total, next) => {
+      return Number(total) + Number(next);
+    }, 0);
+
+    const reactionAverage = reactionSum / 10;
+    setAverage(reactionAverage.toFixed(4));
+  }, [reactionTimes]);
 
   const circleClicked = useCallback(async () => {
     if(!clickable) {
-      punish();
-
+      await punish();
+      // if(reactionTimes.length === 10)
+        // staticUpdateAverage();
+        dynamicUpdateAverage();
     } else {
       const timeWhenClicked = Date.now();
       const reactionTime = (timeWhenClicked - timeWhenClickable) / 1000;
       
       const newReactionTimes = reactionTimes;
       newReactionTimes.push(reactionTime.toFixed(3));
-      setReactionTimes(newReactionTimes);
+      await setReactionTimes(newReactionTimes);
+      // if(reactionTimes.length === 10)
+        // staticUpdateAverage();
+        dynamicUpdateAverage();
       // reactionTime.toFixed(4) makes the number have 4 floating points, this will be useful for the average
+      // dynamicUpdateAverage();
       reset();
-
     }
     console.log(`circle was clicked when clickable is ${clickable}`);
-  }, [clickable, timeWhenClickable, reactionTimes, punish, reset]);
-
-  // useEffect(() => {
-  //   setAverage(reactionTimes.reduce((total, next) => {
-  //     return (total + next) / reactionTimes.length();
-  //   }));
-  // }, [reactionTimes]);
+  }, [clickable, timeWhenClickable, reactionTimes, punish, reset, dynamicUpdateAverage]);
 
   return (
     <Container>
@@ -151,8 +173,11 @@ function PressReaction() {
         <PseudoHeader>
           <p>Average:</p>
           <Secs>
-            <span>0.0000</span>
-            <p>sec</p>
+            {average && <>
+                <span>{average}</span>
+                <p>sec</p>
+              </>
+            }
           </Secs>
         </PseudoHeader>
         <TimeList>
