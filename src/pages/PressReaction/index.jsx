@@ -69,7 +69,7 @@ function PressReaction() {
     setClickable(false);
 
     clearTimeout(countdown);
-    // setCounter(3);
+    setCounter(3);
   }, [countdown, clickTimer]);
 
   useEffect(() => {
@@ -145,6 +145,11 @@ function PressReaction() {
     }
     console.log(`circle was clicked when clickable is ${clickable}`);
   }, [clickable, timeWhenClickable, reactionTimes, punish, reset, dynamicUpdateAverage]);
+
+  useEffect(() => {
+    if(reactionTimes.length === 10)
+      quit();
+  }, [reactionTimes, quit])
 
   return (
     <Container>
