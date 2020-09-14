@@ -55,15 +55,19 @@ function PressReaction() {
     }
   }, [reactionTimes]);
 
-  const start = useCallback(() => {
+  const start = useCallback((e) => {
     setStarted(true);
-  }, []);
-
-  const quit = useCallback((e) => {
     if(e) {
       setReactionTimes([]);
       setAverage(null);
     }
+  }, []);
+
+  const quit = useCallback((e) => {
+    // if(e) {
+    //   setReactionTimes([]);
+    //   setAverage(null);
+    // }
       
     setStarted(false);
 
