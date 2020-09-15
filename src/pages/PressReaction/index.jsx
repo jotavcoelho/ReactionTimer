@@ -74,8 +74,8 @@ function PressReaction() {
     clearTimeout(clickTimer);
     setClickable(false);
 
-    clearTimeout(countdown);
-    setCounter(3);
+    // clearTimeout(countdown);
+    // setCounter(3);
   }, [countdown, clickTimer]);
 
   useEffect(() => {
