@@ -61,7 +61,7 @@ export const PseudoHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: bottom;
   height: 30px;
   border-bottom: solid 4px #F0DD60;
   font-weight: bold;
@@ -102,7 +102,7 @@ export const Time = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: bottom;
   height: 24px;
   border-bottom: 1px dotted #decaf7;
   margin-bottom: 2px;
