@@ -64,18 +64,13 @@ function PressReaction() {
   }, []);
 
   const quit = useCallback((e) => {
-    // if(e) {
-    //   setReactionTimes([]);
-    //   setAverage(null);
-    // }
-      
     setStarted(false);
 
     clearTimeout(clickTimer);
     setClickable(false);
 
-    // clearTimeout(countdown);
-    // setCounter(3);
+    clearTimeout(countdown);
+    setCounter(3);
   }, [countdown, clickTimer]);
 
   useEffect(() => {
