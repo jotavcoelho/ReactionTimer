@@ -1,5 +1,5 @@
 # ReactionTimer
-Simple react app for me to refresh it in my memory, I'm almost sure it's gonna grow to another repo, with way more features.
+Simple react app that's probably going to grow into another project, with many more features.
 
 ## Rules
 - You should click the circle when it changes color as fast as possible
